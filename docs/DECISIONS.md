@@ -86,3 +86,15 @@ GitHub is the source of truth for source code, specifications, decisions, change
 
 ## D-029
 Normal requested development work may be written directly to `develop`. Direct `main` changes, destructive actions and production/security-sensitive changes require explicit user confirmation.
+
+## D-030
+届出年月日は正式提出時にシステムが自動記録する。下書き作成日は届出年月日にしない。差戻し後も当初届出年月日は保持し、再申請日時を履歴として記録する。
+
+## D-031
+所定勤務時間は自由入力を基本とせず、部門ごとに管理する勤務パターン（シフト）から申請者が当日のシフトを選択する。
+
+## D-032
+時間外勤務申請で表示するシフト候補は、勤務日時点の申請者所属部門に絞り込む。全部門のシフト候補は表示しない。
+
+## D-033
+選択したシフトから所定開始・終了・休憩時間を自動設定し、申請時点の値をスナップショットとして保存する。
