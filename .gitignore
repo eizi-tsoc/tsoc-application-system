@@ -1,0 +1,27 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+.next/
+
+# Logs / editor / OS
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*
+
+# Runtime and personal data - NEVER COMMIT
+storage/
+uploads/
+generated/
+private/
+data/
+employee-data/
+application-data/
