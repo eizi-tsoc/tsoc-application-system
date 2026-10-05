@@ -6,3 +6,5 @@
 
 .buttonlike{display:inline-flex;align-items:center;justify-content:center;background:#1263b5;color:#fff;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
 .staff-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px;align-items:start}.org-tree .treeItem{display:block;width:100%;text-align:left;background:transparent;color:#172033;border:0;padding:10px 8px;border-radius:8px}.org-tree .treeItem.active{background:#e8f1fb;color:#075aa8}.org-tree .treeDept{padding-left:28px;font-weight:500}@media(max-width:900px){.staff-layout{grid-template-columns:1fr}}
+
+.staff-head-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.staff-head-actions .buttonlike{margin:0}.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0}.stat-grid>div{border:1px solid #dfe5ee;border-radius:10px;padding:16px;text-align:center}.stat-grid b{display:block;font-size:28px}.stat-grid span{font-size:12px;color:#64748b}@media(max-width:900px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
