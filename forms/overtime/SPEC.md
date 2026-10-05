@@ -1,4 +1,4 @@
-# 時間外勤務申請 - Specification v0.1
+# 時間外勤務申請 - Specification v0.2
 
 Form code: OVERTIME
 
@@ -10,18 +10,30 @@ Auto-populate from employee master:
 - employee ID
 - name
 - department
-- relevant work pattern/shift where available
+
+## Application date
+- 届出年月日は職員が入力しない。
+- 下書き作成日ではなく、正式に「申請する」を実行した日をシステムが自動記録する。
+- 差戻し後の再申請では当初の届出年月日を保持し、再申請日時は履歴として別途記録する。
+
+## Work schedule / 所定勤務時間
+- 管理画面で部門ごとに基本勤務時間・シフト（勤務パターン）を登録する。
+- 申請者は勤務日を指定したうえで「当日のシフト」を選択する。
+- シフト候補は申請者の所属部門に登録された有効なシフトだけを表示する。全部門のシフトは表示しない。
+- シフトを選択すると、所定勤務の開始時刻・終了時刻・所定休憩時間を自動表示する。
+- 選択したシフトIDと、その時点の名称・開始/終了・休憩時間を申請データにスナップショットして履歴を保持する。
+- 将来、日別シフト連携が実装された場合は当日の予定シフトを初期選択できるが、所属部門で絞り込む原則は維持する。
 
 ## Input
 - overtime work date
-- scheduled start/end (auto where available)
+- today's shift (department-filtered selection)
+- scheduled start/end/break (automatic from selected shift)
 - overtime start
 - overtime end
 - calculated overtime duration
 - reason overtime is necessary
 - overtime reduction effort
-- break yes/no
-- break time/duration
+- break yes/no and time
 - planned late-night work yes/no
 
 ## Actions
