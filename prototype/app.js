@@ -1,0 +1,13 @@
+const $=s=>document.querySelector(s);
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)};
+const today=new Date(); $("#applyDate").value=today.toLocaleDateString("ja-JP"); $("#workDate").value=today.toISOString().slice(0,10);
+function duration(){const [sh,sm]=$("#start").value.split(":").map(Number),[eh,em]=$("#end").value.split(":").map(Number);let m=(eh*60+em)-(sh*60+sm)-Number($("#breakMinutes").value||0);if(m<0)m+=1440;$("#duration").value=`${Math.floor(m/60)}時間${m%60}分`;}
+["#start","#end","#breakMinutes"].forEach(s=>$(s).addEventListener("input",duration));
+function data(){return{date:$("#workDate").value,start:$("#start").value,end:$("#end").value,duration:$("#duration").value,reason:$("#reason").value,reduction:$("#reduction").value,break:[...document.querySelectorAll('[name=break]')].find(x=>x.checked).value,late:[...document.querySelectorAll('[name=late]')].find(x=>x.checked).value}}
+$("#draftBtn").onclick=()=>{localStorage.setItem("tsoc-overtime-draft",JSON.stringify(data()));toast("下書きをブラウザ内に保存しました")};
+const saved=JSON.parse(localStorage.getItem("tsoc-overtime-draft")||"null");if(saved){$("#workDate").value=saved.date||$("#workDate").value;$("#start").value=saved.start||"18:00";$("#end").value=saved.end||"19:30";$("#reason").value=saved.reason||"";$("#reduction").value=saved.reduction||"";$("#breakMinutes").value=saved.break==="あり"?30:0;document.querySelector(`[name=break][value="${saved.break||"なし"}"]`).checked=true;document.querySelector(`[name=late][value="${saved.late||"なし"}"]`).checked=true;duration()}
+function showApproval(){const d=data();$("#summaryBody").innerHTML=`<b>申請者</b><span>テスト 職員（北参道 / 管理部）</span><b>勤務日</b><span>${d.date}</span><b>時間外勤務</b><span>${d.start} ～ ${d.end}（${d.duration}）</span><b>理由</b><span>${d.reason||"未入力"}</span><b>削減の取組み</b><span>${d.reduction||"未入力"}</span><b>休憩</b><span>${d.break}</span><b>深夜勤務予定</b><span>${d.late}</span>`;$("#applicantView").classList.add("hidden");$("#approvalView").classList.remove("hidden");}
+$("#overtimeForm").onsubmit=e=>{e.preventDefault();localStorage.setItem("tsoc-overtime-submitted",JSON.stringify(data()));toast("申請しました（デモ）");setTimeout(showApproval,400)};
+$("#roleBtn").onclick=()=>{if($("#approvalView").classList.contains("hidden"))showApproval();else{$("#approvalView").classList.add("hidden");$("#applicantView").classList.remove("hidden")}};
+function action(kind){if((kind==="差戻し"||kind==="却下")&&!$("#comment").value.trim()){toast("差戻し・却下にはコメントが必要です");return}$("#approvalStatus").textContent=kind;toast(kind+"として記録しました（デモ）")}
+$("#approveBtn").onclick=()=>action("承認済み");$("#returnBtn").onclick=()=>action("差戻し");$("#rejectBtn").onclick=()=>action("却下");duration();
