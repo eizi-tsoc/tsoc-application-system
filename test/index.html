@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TSOC Staff System TEST | 時間外勤務申請</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="test-banner">TEST環境　v0.2.1　※実データは保存されません</div>
+<header><div><strong>TSOC Staff System</strong><span>職員申請・承認</span></div><button id="roleBtn" class="ghost">承認者画面を確認</button></header>
+<main>
+<section id="applicantView">
+  <div class="crumb">ホーム　›　新規申請　›　時間外勤務申請</div>
+  <div class="title-row"><div><h1>時間外勤務申請</h1><p>時間外勤務を行う場合は、事前に申請してください。</p></div><span class="badge">下書き</span></div>
+  <div class="notice">申請理由は具体的に入力し、時間外勤務は必要な範囲で申請してください。</div>
+  <form id="overtimeForm">
+    <section class="card"><h2>申請者情報</h2><div class="grid3">
+      <label>職員番号<input value="TSOC-0001" readonly></label>
+      <label>所属<input value="北参道 / 管理部" readonly></label>
+      <label>氏名<input value="テスト 職員" readonly></label>
+    </div></section>
+    <section class="card"><h2>時間外勤務</h2><div class="grid3">
+      <label>勤務日<input id="workDate" type="date" required></label>
+      <label>当日のシフト<select id="workPattern" required></select><small class="muted">所属部門のシフトのみ表示</small></label>
+      <label>所定勤務時間<input id="scheduledHours" readonly></label>
+      <label>所定休憩<input id="scheduledBreak" readonly></label><label>開始時刻<input id="start" type="time" value="18:00" required></label>
+      <label>終了時刻<input id="end" type="time" value="19:30" required></label>
+      <label>時間外勤務時間<input id="duration" value="1時間30分" readonly></label>
+    </div>
+    <label>時間外勤務が必要な理由<textarea id="reason" rows="3" required placeholder="具体的に入力してください"></textarea></label>
+    <label>時間外削減の取組み<textarea id="reduction" rows="2" required placeholder="業務の効率化・分担など"></textarea></label>
+    <div class="grid2">
+      <fieldset><legend>休憩時間</legend><label class="inline"><input type="radio" name="break" value="なし" checked>なし</label><label class="inline"><input type="radio" name="break" value="あり">あり</label><input id="breakMinutes" type="number" min="0" value="0"> 分</fieldset>
+      <fieldset><legend>深夜勤務予定</legend><label class="inline"><input type="radio" name="late" value="なし" checked>なし</label><label class="inline"><input type="radio" name="late" value="あり">あり</label></fieldset>
+    </div></section>
+    <section class="card"><h2>承認経路</h2><div class="route"><span>1</span><div><b>一次承認</b><small>勤怠担当（サンプル）</small></div><i>→</i><span>2</span><div><b>最終承認</b><small>申請者の所属長</small></div></div><p class="muted">※申請時に実際の承認者を確定し、その後の人事変更では自動変更しません。</p></section>
+    <div class="actions"><button type="button" class="secondary" id="draftBtn">下書き保存</button><button type="submit">申請する</button></div>
+  </form>
+</section>
+<section id="approvalView" class="hidden">
+ <div class="crumb">ホーム　›　承認待ち　›　OT-DEMO-0001</div><div class="title-row"><div><h1>時間外勤務申請の承認</h1><p>申請内容を確認して対応してください。</p></div><span class="badge blue" id="approvalStatus">承認待ち</span></div>
+ <section class="card" id="summary"><h2>申請内容</h2><div id="summaryBody" class="summary"></div></section>
+ <section class="card"><h2>承認操作</h2><label>コメント<textarea id="comment" rows="3" placeholder="差戻し・却下の場合は必須です"></textarea></label><div class="actions"><button class="danger" id="rejectBtn">却下</button><button class="secondary" id="returnBtn">差戻し</button><button id="approveBtn">承認</button></div></section>
+</section>
+</main>
+<div id="toast"></div>
+<script src="./app.js"></script>
+</body></html>
