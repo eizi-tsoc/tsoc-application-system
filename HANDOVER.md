@@ -1,10 +1,10 @@
 # Handover
 
 ## Current version
-v0.2.0
+v0.2.1
 
 ## Current phase
-Browser-operable overtime application prototype implemented on `develop`.
+Overtime prototype updated with department-filtered shift selection on `develop`.
 
 ## Repository policy
 - `main`: stable/approved baseline. Do not modify directly during normal development.
@@ -21,6 +21,13 @@ Never commit real employee personal information, real application records, passw
 - `prototype/styles.css`: responsive UI.
 - `prototype/app.js`: duration calculation, local draft, submit simulation, approval/return/reject demo.
 - `prototype/README.md`: test instructions.
+
+## Implemented in v0.2.1
+- 届出年月日は正式提出時に自動記録する仕様。
+- 部門ごとに基本勤務時間・シフトを管理する設計。
+- 申請時の当日シフト候補は所属部門だけに絞り込み。
+- 選択シフトから所定開始・終了・休憩時間を自動表示。
+- 選択シフト情報は申請時点でスナップショット保存する設計。
 
 ## Current limitations
 There is no backend, database, login/authentication, email notification, PDF generation, audit persistence or hosted test environment yet.
