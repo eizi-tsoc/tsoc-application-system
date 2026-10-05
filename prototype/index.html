@@ -20,9 +20,9 @@
     </div></section>
     <section class="card"><h2>時間外勤務</h2><div class="grid3">
       <label>勤務日<input id="workDate" type="date" required></label>
-      <label>所定勤務時間<input value="09:00 ～ 18:00" readonly></label>
-      <label>申請日<input id="applyDate" readonly></label>
-      <label>開始時刻<input id="start" type="time" value="18:00" required></label>
+      <label>当日のシフト<select id="workPattern" required></select><small class="muted">所属部門のシフトのみ表示</small></label>
+      <label>所定勤務時間<input id="scheduledHours" readonly></label>
+      <label>所定休憩<input id="scheduledBreak" readonly></label><label>開始時刻<input id="start" type="time" value="18:00" required></label>
       <label>終了時刻<input id="end" type="time" value="19:30" required></label>
       <label>時間外勤務時間<input id="duration" value="1時間30分" readonly></label>
     </div>
