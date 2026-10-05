@@ -1,10 +1,10 @@
 # Handover
 
 ## Current version
-v0.1.0
+v0.2.0
 
 ## Current phase
-Initial specification and first application implementation planning.
+Browser-operable overtime application prototype implemented on `develop`.
 
 ## Repository policy
 - `main`: stable/approved baseline. Do not modify directly during normal development.
@@ -16,11 +16,19 @@ Initial specification and first application implementation planning.
 ## Data safety
 Never commit real employee personal information, real application records, passwords, API keys, secrets, or generated production PDFs.
 
-## First target
-Overtime application (時間外勤務申請).
+## Implemented in v0.2.0
+- `prototype/index.html`: overtime applicant + approval screens.
+- `prototype/styles.css`: responsive UI.
+- `prototype/app.js`: duration calculation, local draft, submit simulation, approval/return/reject demo.
+- `prototype/README.md`: test instructions.
+
+## Current limitations
+There is no backend, database, login/authentication, email notification, PDF generation, audit persistence or hosted test environment yet.
 
 ## Next work
-1. Implement the browser-operable overtime application prototype.
-2. Connect applicant -> approval -> return/resubmit -> final approval -> post-approval processing.
-3. Add tests and refine UI from user feedback.
-4. Keep CHANGELOG and DECISIONS updated with each meaningful change.
+1. User UI/flow review of the overtime prototype.
+2. Select the implementation/deployment stack for a real test environment.
+3. Implement employee/auth foundation and persistent application storage.
+4. Implement frozen workflow resolution and approval action history.
+5. Implement PDF generation and post-approval processing.
+6. Keep CHANGELOG, DECISIONS and this HANDOVER updated with each meaningful change.
