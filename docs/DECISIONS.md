@@ -98,3 +98,6 @@ Normal requested development work may be written directly to `develop`. Direct `
 
 ## D-033
 選択したシフトから所定開始・終了・休憩時間を自動設定し、申請時点の値をスナップショットとして保存する。
+
+## D-034
+当面のブランチ運用は `develop` と `main` の2本を基本とする。`develop` は開発・テスト確認用の最新版、`main` は確認済みの本番リリース候補ソースとする。GitHubブランチと実行環境は別物であり、develop→テスト環境、main→本番環境という対応を基本とする。
